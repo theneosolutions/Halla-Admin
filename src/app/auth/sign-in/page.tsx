@@ -26,7 +26,7 @@ function SignInDefault() {
 
     setLoading(true);
 
-    const url = 'https://backend.halla.sa/api/auth/sign-in';
+    const url = `https://backend.halla.sa/api/auth/sign-in`;
 
     try {
       const response = await fetch(url, {

@@ -9,8 +9,9 @@
 
 const nextConfig = {
   swcMinify: true,
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
+  // basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+  NEXT_PUBLIC_SERVER: process.env.NEXT_PUBLIC_SERVER,
+  // assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
   images: {
     domains: [
       'images.unsplash.com',

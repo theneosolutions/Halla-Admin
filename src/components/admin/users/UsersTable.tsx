@@ -17,18 +17,14 @@ import { useRouter } from 'next/navigation';
 
 import EditUser from 'app/admin/users/edit/[id]/page';
 
-type RowObj = {
-  user: string,
-  firstName: string,
-  lastName: string,
-  roles: string,
-  status: string,
-  email: string,
-  confirmed: boolean,
-  phoneNumber: string,
-  isPhoneVerified: boolean,
-};
-
+interface RowObj {
+  id: number;
+  user: string;
+  roles: string[];
+  email: string;
+  status: string;
+  createdAt: Date;
+}
 const columnHelper = createColumnHelper<RowObj>();
 
 export default function UsersTable(props) {
@@ -49,7 +45,7 @@ export default function UsersTable(props) {
   const fetchData = () => {
     const token = localStorage.getItem('accessToken');
     // Fetch data from the API with pagination parameters
-    fetch(`http://localhost:8000/api/users?order=DESC&page=${page}&take=${pageSize}`, {
+    fetch(`https://backend.halla.sa/api/users?order=DESC&page=${page}&take=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -89,7 +85,7 @@ export default function UsersTable(props) {
       const token = localStorage.getItem('accessToken');
       setLoading(true);
 
-      const url = `http://localhost:8000/api/admin/users/${id}`;
+      const url = `https://backend.halla.sa/api/admin/users/${id}`;
 
       try {
         const response = await fetch(url, {
@@ -132,37 +128,6 @@ export default function UsersTable(props) {
         )
       },
     }),
-
-
-    // columnHelper.accessor('firstName', {
-    //   id: 'firstName',
-    //   header: () => (
-    //     <p className="text-sm font-bold text-gray-600 dark:text-white">NAME</p>
-    //   ),
-    //   cell: (info) => {
-    //     const firstName: any = info.getValue();
-    //     return (
-    //       <p className="text-sm font-bold text-navy-700 dark:text-white">
-    //         {`${firstName}`}
-    //       </p>
-    //     )
-    //   },
-    // }),
-
-    // columnHelper.accessor('lastName', {
-    //   id: 'lastName',
-    //   header: () => (
-    //     <p className="text-sm font-bold text-gray-600 dark:text-white">NAME</p>
-    //   ),
-    //   cell: (info) => {
-    //     const lastName: any = info.getValue();
-    //     return (
-    //       <p className="text-sm font-bold text-navy-700 dark:text-white">
-    //         {`${lastName}`}
-    //       </p>
-    //     )
-    //   },
-    // }),
 
     columnHelper.accessor('roles', {
       id: 'roles',

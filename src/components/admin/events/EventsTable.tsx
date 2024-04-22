@@ -48,7 +48,7 @@ export default function EventsTable(props) {
 
   const fetchData = () => {
     const token = localStorage.getItem('accessToken');
-    fetch(`http://localhost:8000/api/events?order=DESC&page=${page}&take=${pageSize}`, {
+    fetch(`https://backend.halla.sa/api/events?order=DESC&page=${page}&take=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -80,7 +80,7 @@ export default function EventsTable(props) {
       const token = localStorage.getItem('accessToken');
       setLoading(true);
 
-      const url = `http://localhost:8000/api/admin/users/${id}`;
+      const url = `https://backend.halla.sa/api/admin/users/${id}`;
 
       try {
         const response = await fetch(url, {
@@ -237,7 +237,7 @@ export default function EventsTable(props) {
         <CardMenu />
       </div>
 
-      <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">
+      {data?.length && <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">
         <table className="w-full">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -292,7 +292,7 @@ export default function EventsTable(props) {
               })}
           </tbody>
         </table>
-      </div>
+      </div>}
       {!props.isHomePage &&
         <div className="flex justify-center mt-4">
           <button

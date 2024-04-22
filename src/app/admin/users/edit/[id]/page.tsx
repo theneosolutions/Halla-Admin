@@ -49,7 +49,7 @@ const EditUser = () => {
     console.log('token', token);
 
 
-    const url = `http://localhost:8000/api/users/${id}`;
+    const url = `https://backend.halla.sa/api/users/${id}`;
 
     try {
 
@@ -93,7 +93,7 @@ const EditUser = () => {
 
     setLoading(true);
 
-    const url = `http://localhost:8000/api/admin/users/${id}`;
+    const url = `https://backend.halla.sa/api/admin/users/${id}`;
 
     try {
       const response = await fetch(url, {

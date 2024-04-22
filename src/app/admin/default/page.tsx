@@ -19,19 +19,20 @@ import MonthlyRevenue from 'components/admin/default/MonthlyRevenue';
 import UsersTable from 'components/admin/users/UsersTable';
 import EventsTable from 'components/admin/events/EventsTable';
 
-type RowObj = {
+interface CardData {
   totalUsers: number;
   activeUsers: number;
   disabledUsers: number;
   totalRevenue: number;
   totalEvents: number;
-
-};
-
+  revenueChartData: any;
+}
 
 const Dashboard = () => {
-  const [cardData, setCardData] = useState<RowObj | {}>({});
+  const [cardData, setCardData] = useState<CardData>();
   const [loading, setLoading] = useState<boolean>(true);
+
+  console.log('process.env.NEXT_PUBLIC_SERVER', process.env.NEXT_PUBLIC_SERVER);
 
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const Dashboard = () => {
     setLoading(true);
     const token = localStorage.getItem('accessToken');
     // Fetch data from the API with pagination parameters
-    fetch(`http://localhost:8000/api/stats`, {
+    fetch(`https://backend.halla.sa/api/stats`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -66,17 +67,17 @@ const Dashboard = () => {
         <Widget
           icon={<MdBarChart className="h-7 w-7" />}
           title={'Total Users'}
-          subtitle={cardData?.totalUsers || 0}
+          subtitle={String(cardData?.totalUsers) || '0'}
         />
         <Widget
           icon={<IoDocuments className="h-6 w-6" />}
           title={'Active Users'}
-          subtitle={cardData?.activeUsers || 0}
+          subtitle={String(cardData?.activeUsers) || '0'}
         />
         <Widget
           icon={<MdBarChart className="h-7 w-7" />}
           title={'Disabled Users'}
-          subtitle={cardData?.disabledUsers || 0}
+          subtitle={String(cardData?.disabledUsers) || '0'}
         />
         <Widget
           icon={<MdDashboard className="h-6 w-6" />}
@@ -86,7 +87,7 @@ const Dashboard = () => {
         <Widget
           icon={<MdBarChart className="h-7 w-7" />}
           title={'Total Events'}
-          subtitle={cardData?.totalEvents || 0}
+          subtitle={String(cardData?.totalEvents) || '0'}
         />
         {/* <Widget
           icon={<IoMdHome className="h-6 w-6" />}

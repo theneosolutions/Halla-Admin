@@ -51,7 +51,7 @@ const EditPackage = () => {
     console.log('token', token);
 
 
-    const url = `http://localhost:8000/api/admin/packages/${id}`;
+    const url = `https://backend.halla.sa/api/admin/packages/${id}`;
 
     try {
 
@@ -94,7 +94,7 @@ const EditPackage = () => {
 
     setLoading(true);
 
-    const url = `http://localhost:8000/api/admin/packages/${id}`;
+    const url = `https://backend.halla.sa/api/admin/packages/${id}`;
 
     try {
       const response = await fetch(url, {

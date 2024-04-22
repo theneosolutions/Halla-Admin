@@ -27,7 +27,7 @@ const Navbar = (props: {
       const token = localStorage.getItem('accessToken');
       if (token) {
         try {
-          const response = await fetch('https://backend.halla.sa/api/auth/me', {
+          const response = await fetch(`https://backend.halla.sa/api/auth/me`, {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`,

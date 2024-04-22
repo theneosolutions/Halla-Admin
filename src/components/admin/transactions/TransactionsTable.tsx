@@ -39,7 +39,7 @@ export default function TransactionsTable() {
   const fetchData = () => {
     const token = localStorage.getItem('accessToken');
     // Fetch data from the API with pagination parameters
-    fetch(`http://localhost:8000/api/admin/transactions?order=DESC&page=${page}&take=${pageSize}&filter=monthly`,{
+    fetch(`https://backend.halla.sa/api/admin/transactions?order=DESC&page=${page}&take=${pageSize}&filter=monthly`,{
       headers: {
         Authorization: `Bearer ${token}`,
       },
