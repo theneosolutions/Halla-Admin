@@ -196,18 +196,19 @@ export default function EventsTable(props) {
     }),
 
 
-    // ...(!props.isHomePage ? [{
-    //   id: 'actions',
-    //   header: () => (
-    //     <p className="text-sm font-bold text-gray-600 dark:text-white">Actions</p>
-    //   ),
-    //   cell: (info) => (
-    //     <div className="flex items-center">
-    //       <MdEdit className="cursor-pointer text-blue-500 dark:text-blue-300 ml-1" onClick={() => push(`/admin/users/edit/${info?.row?.original?.id}`)} />
-    //       <MdDelete className="cursor-pointer text-red-500 dark:text-red-300 ml-1" onClick={() => handleDelete(info?.row?.original?.id)} />
-    //     </div>
-    //   ),
-    // }] : [])
+    ...(!props.isHomePage ? [{
+      id: 'actions',
+      header: () => (
+        <p className="text-sm font-bold text-gray-600 dark:text-white">Actions</p>
+      ),
+      cell: (info) => (
+        <div className="flex items-center">
+          <MdVisibility className="cursor-pointer text-blue-500 dark:text-blue-300 ml-1" onClick={() => push(`/admin/events/view/${info?.row?.original?.id}`)} />
+          {/* <MdEdit className="cursor-pointer text-blue-500 dark:text-blue-300 ml-1" onClick={() => push(`/admin/users/edit/${info?.row?.original?.id}`)} /> */}
+          {/* <MdDelete className="cursor-pointer text-red-500 dark:text-red-300 ml-1" onClick={() => handleDelete(info?.row?.original?.id)} /> */}
+        </div>
+      ),
+    }] : [])
   ];
 
 
