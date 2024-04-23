@@ -49,7 +49,7 @@ const EditUser = () => {
     console.log('token', token);
 
 
-    const url = `https://backend.halla.sa/api/users/${id}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER}/users/${id}`;
 
     try {
 
@@ -93,7 +93,7 @@ const EditUser = () => {
 
     setLoading(true);
 
-    const url = `https://backend.halla.sa/api/admin/users/${id}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER}/admin/users/${id}`;
 
     try {
       const response = await fetch(url, {

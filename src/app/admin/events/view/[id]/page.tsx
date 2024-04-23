@@ -82,7 +82,7 @@ const EventDetailsPage: React.FC<EventDetailsPageProps> = ({ eventId }) => {
 
     const token = localStorage.getItem('accessToken');
 
-    const url = `https://backend.halla.sa/api/events/${id}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER}/events/${id}`;
 
     try {
 

@@ -30,7 +30,7 @@ const Packages = () => {
 
     setLoading(true);
 
-    const url = `https://backend.halla.sa/api/admin/packages`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER}/admin/packages`;
 
     try {
       const response = await fetch(url, {

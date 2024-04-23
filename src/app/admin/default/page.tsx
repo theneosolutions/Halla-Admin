@@ -43,7 +43,7 @@ const Dashboard = () => {
     setLoading(true);
     const token = localStorage.getItem('accessToken');
     // Fetch data from the API with pagination parameters
-    fetch(`https://backend.halla.sa/api/stats`, {
+    fetch(`${process.env.NEXT_PUBLIC_SERVER}/stats`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

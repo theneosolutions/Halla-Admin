@@ -45,7 +45,7 @@ export default function UsersTable(props) {
   const fetchData = () => {
     const token = localStorage.getItem('accessToken');
     // Fetch data from the API with pagination parameters
-    fetch(`https://backend.halla.sa/api/users?order=DESC&page=${page}&take=${pageSize}`, {
+    fetch(`${process.env.NEXT_PUBLIC_SERVER}/users?order=DESC&page=${page}&take=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -85,7 +85,7 @@ export default function UsersTable(props) {
       const token = localStorage.getItem('accessToken');
       setLoading(true);
 
-      const url = `https://backend.halla.sa/api/admin/users/${id}`;
+      const url = `${process.env.NEXT_PUBLIC_SERVER}/admin/users/${id}`;
 
       try {
         const response = await fetch(url, {

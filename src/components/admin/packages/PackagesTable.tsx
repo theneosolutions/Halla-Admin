@@ -39,7 +39,7 @@ export default function PackagesTable() {
   }, []);
 
   function fetchData() {
-    fetch(`https://backend.halla.sa/api/admin/packages?order=DESC&page=1&take=10`)
+    fetch(`${process.env.NEXT_PUBLIC_SERVER}/admin/packages?order=DESC&page=1&take=10`)
       .then(response => response.json())
       .then(data => {
         setData(data.data);
@@ -64,7 +64,7 @@ export default function PackagesTable() {
       const token = localStorage.getItem('accessToken');
       setLoading(true);
 
-      const url = `https://backend.halla.sa/api/admin/packages/${id}`;
+      const url = `${process.env.NEXT_PUBLIC_SERVER}/admin/packages/${id}`;
 
       try {
         const response = await fetch(url, {

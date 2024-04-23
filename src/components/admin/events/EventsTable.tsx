@@ -48,7 +48,7 @@ export default function EventsTable(props) {
 
   const fetchData = () => {
     const token = localStorage.getItem('accessToken');
-    fetch(`https://backend.halla.sa/api/events?order=DESC&page=${page}&take=${pageSize}`, {
+    fetch(`${process.env.NEXT_PUBLIC_SERVER}/events?order=DESC&page=${page}&take=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -80,7 +80,7 @@ export default function EventsTable(props) {
       const token = localStorage.getItem('accessToken');
       setLoading(true);
 
-      const url = `https://backend.halla.sa/api/admin/users/${id}`;
+      const url = `${process.env.NEXT_PUBLIC_SERVER}/admin/users/${id}`;
 
       try {
         const response = await fetch(url, {
