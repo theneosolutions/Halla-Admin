@@ -61,7 +61,7 @@ interface EventDetailsPageProps {
   eventId: number;
 }
 
-const EventDetailsPage: React.FC<EventDetailsPageProps> = ({ eventId }) => {
+const EventDetailsPage = () => {
   const [eventData, setEventData] = useState<EventData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 

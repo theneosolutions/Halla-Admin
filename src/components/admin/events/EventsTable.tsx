@@ -159,17 +159,17 @@ export default function EventsTable(props) {
       ),
     }),
 
-    columnHelper.accessor('notes', {
-      id: 'notes',
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">Notes</p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
+    // columnHelper.accessor('notes', {
+    //   id: 'notes',
+    //   header: () => (
+    //     <p className="text-sm font-bold text-gray-600 dark:text-white">Notes</p>
+    //   ),
+    //   cell: (info) => (
+    //     <p className="text-sm font-bold text-navy-700 dark:text-white">
+    //       {info.getValue()}
+    //     </p>
+    //   ),
+    // }),
 
     columnHelper.accessor('eventDate', {
       id: 'eventDate',
@@ -183,17 +183,17 @@ export default function EventsTable(props) {
       ),
     }),
 
-    columnHelper.accessor('code', {
-      id: 'code',
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">Code</p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
+    // columnHelper.accessor('code', {
+    //   id: 'code',
+    //   header: () => (
+    //     <p className="text-sm font-bold text-gray-600 dark:text-white">Code</p>
+    //   ),
+    //   cell: (info) => (
+    //     <p className="text-sm font-bold text-navy-700 dark:text-white">
+    //       {info.getValue()}
+    //     </p>
+    //   ),
+    // }),
 
 
     ...(!props.isHomePage ? [{
