@@ -10,7 +10,10 @@ import {
   MdBarChart,
   MdPerson,
   MdOutlineCompareArrows,
-  MdOutlineAllInbox
+  MdOutlineAllInbox,
+  MdNotifications,
+  MdEvent,
+  MdSettings
 } from 'react-icons/md';
 
 const routes = [
@@ -59,7 +62,7 @@ const routes = [
     name: 'Events',
     layout: '/admin',
     path: 'events',
-    icon: <MdPerson className="h-6 w-6" />,
+    icon: <MdEvent className="h-6 w-6" />,
   },
 
   {
@@ -70,10 +73,17 @@ const routes = [
   },
 
   {
+    name: 'Send Notification',
+    layout: '/admin',
+    path: 'send-notifications',
+    icon: <MdNotifications className="h-6 w-6" />,
+  },
+
+  {
     name: 'Profile',
     layout: '/admin',
     path: 'profile',
-    icon: <MdPerson className="h-6 w-6" />,
+    icon: <MdSettings className="h-6 w-6" />,
   },
   // {
   //   name: 'Sign In',
