@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineFileText } from 'react-icons/ai';
 
 // Admin Imports
 
@@ -32,12 +33,12 @@ const routes = [
     layout: '/admin',
     icon: <MdOutlineAllInbox className="h-6 w-6" />,
     path: 'packages',
-    items: [{
-      name: 'Add Package',
-      layout: '/admin',
-      icon: <MdOutlineAllInbox className="h-6 w-6" />,
-      path: 'add',
-    }]
+    // items: [{
+    //   name: 'Add Package',
+    //   layout: '/admin',
+    //   icon: <MdOutlineAllInbox className="h-6 w-6" />,
+    //   path: 'add',
+    // }]
   },
   {
     name: 'Transactions',
@@ -59,6 +60,13 @@ const routes = [
     layout: '/admin',
     path: 'events',
     icon: <MdPerson className="h-6 w-6" />,
+  },
+
+  {
+    name: 'Web Pages',
+    layout: '/admin',
+    path: 'web-pages',
+    icon: <AiOutlineFileText className="h-6 w-6" />,
   },
 
   {
