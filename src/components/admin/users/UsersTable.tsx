@@ -13,7 +13,6 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import { useRouter } from 'next/navigation';
-// import { useRouter } from 'next/router';
 
 import EditUser from 'app/admin/users/edit/[id]/page';
 
@@ -32,19 +31,18 @@ export default function UsersTable(props) {
   const [pageMeta, setPageMeta] = useState<any>({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [page, setPage] = useState<number>(1); // Current page number
-  const pageSize = 10; // Number of records per page
+  const [page, setPage] = useState<number>(1);
+  const pageSize = 10;
 
   const { push } = useRouter();
 
 
   useEffect(() => {
     fetchData();
-  }, [page]); // Fetch data when page changes
+  }, [page]);
 
   const fetchData = () => {
     const token = localStorage.getItem('accessToken');
-    // Fetch data from the API with pagination parameters
     fetch(`${process.env.NEXT_PUBLIC_SERVER}/users?order=DESC&page=${page}&take=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -76,11 +74,13 @@ export default function UsersTable(props) {
     push(`/admin/users/edit/${rowId}`)
   };
 
+  const handleView = (rowId: string) => {
+    push(`/admin/users/view/${rowId}`)
+  };
+
   const handleDelete = async (id) => {
-    // Show confirmation dialog
     const confirmDelete = window.confirm('Are you sure you want to delete this user?');
 
-    // If user confirms deletion
     if (confirmDelete) {
       const token = localStorage.getItem('accessToken');
       setLoading(true);
@@ -191,7 +191,7 @@ export default function UsersTable(props) {
 
 
         <div className="flex items-center">
-          {/* <MdVisibility className="cursor-pointer text-blue-500 dark:text-blue-300 ml-1" onClick={() => push(`/admin/packages/edit/${info.row.id}`)} /> */}
+          <MdVisibility className="cursor-pointer text-blue-500 dark:text-blue-300 ml-1" onClick={() => handleView(info?.row?.original?.id)} />
           <MdEdit className="cursor-pointer text-blue-500 dark:text-blue-300 ml-1" onClick={() => handleEdit(info?.row?.original?.id)} />
           <MdDelete className="cursor-pointer text-red-500 dark:text-red-300 ml-1" onClick={() => handleDelete(info?.row?.original?.id)} />
         </div>
