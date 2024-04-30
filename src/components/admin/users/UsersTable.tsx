@@ -56,6 +56,9 @@ export default function UsersTable(props) {
           // console.log('d.firstName + " " + d.lastName', d.firstName + " " + d.lastName);
 
           d.user = d.firstName + " " + d.lastName
+
+          if (!d.email)
+            d.email = d.callingCode + " " + d.phoneNumber
         })
         setData(data.data);
         setPageMeta(data.meta)
@@ -117,7 +120,7 @@ export default function UsersTable(props) {
     columnHelper.accessor('user', {
       id: 'user',
       header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">Name</p>
+        <p className="text-sm font-bold text-gray-600 dark:text-white">NAME</p>
       ),
       cell: (info) => {
         const userName: any = info.getValue();
@@ -132,7 +135,7 @@ export default function UsersTable(props) {
     columnHelper.accessor('roles', {
       id: 'roles',
       header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">Role</p>
+        <p className="text-sm font-bold text-gray-600 dark:text-white">ROLE</p>
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -143,7 +146,7 @@ export default function UsersTable(props) {
     columnHelper.accessor('email', {
       id: 'email',
       header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">Email</p>
+        <p className="text-sm font-bold text-gray-600 dark:text-white">EMAIL/PHONE #NO</p>
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">

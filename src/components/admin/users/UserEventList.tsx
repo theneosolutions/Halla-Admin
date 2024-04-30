@@ -1,6 +1,8 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import GeneralTable from 'components/Table/GeneralTable';
 import React, { useState, useEffect } from 'react';
+import { MdVisibility } from 'react-icons/md';
+import { useRouter } from 'next/navigation';
 
 interface EventData {
     id: number;
@@ -12,13 +14,14 @@ interface EventData {
 
 const columnHelper = createColumnHelper<EventData>();
 
-const UserEventsList = ({ userId }: { userId: string }) => {
+const UserEventsList = ({ userId, ...props }: { userId: string, isHomePage: boolean }) => {
     const [events, setEvents] = useState<EventData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [meta, setMeta] = useState({})
+    const { push } = useRouter();
 
 
     const token = localStorage.getItem('accessToken');
@@ -118,6 +121,20 @@ const UserEventsList = ({ userId }: { userId: string }) => {
                 </p>
             ),
         },
+
+        ...(!props?.isHomePage ? [{
+            id: 'actions',
+            header: () => (
+                <p className="text-sm font-bold text-gray-600 dark:text-white">Actions</p>
+            ),
+            cell: (info) => (
+                <div className="flex items-center">
+                    <MdVisibility className="cursor-pointer text-blue-500 dark:text-blue-300 ml-1" onClick={() => push(`/admin/events/view/${info?.row?.original?.id}`)} />
+                    {/* <MdEdit className="cursor-pointer text-blue-500 dark:text-blue-300 ml-1" onClick={() => push(`/admin/users/edit/${info?.row?.original?.id}`)} /> */}
+                    {/* <MdDelete className="cursor-pointer text-red-500 dark:text-red-300 ml-1" onClick={() => handleDelete(info?.row?.original?.id)} /> */}
+                </div>
+            ),
+        }] : [])
     ];
 
 
