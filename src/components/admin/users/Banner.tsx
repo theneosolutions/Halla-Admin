@@ -37,13 +37,13 @@ const Banner = (props) => {
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-2xl font-bold text-navy-700 dark:text-white">
-            {props.moneySpent || 0}
+            {(props.revenueGeneratedByUser || 0) +" SAR"}
           </h4>
           <p className="text-sm font-normal text-gray-600">Money Spent</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-2xl font-bold text-navy-700 dark:text-white">
-            {props.totalEvents || 0}
+            {props.userEventCount || 0}
           </h4>
           <p className="text-sm font-normal text-gray-600">Total Events</p>
         </div>

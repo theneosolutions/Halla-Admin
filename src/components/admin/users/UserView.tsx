@@ -32,8 +32,8 @@ const ViewUser = ({ userId }: { userId: string }) => {
   const [user, setUser] = useState<UserData>();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
-    moneySpent: 0,
-    totalEvents: '',
+    revenueGeneratedByUser: 0,
+    userEventCount: 0,
   });
   const [error, setError] = useState('');
 
@@ -59,13 +59,19 @@ const ViewUser = ({ userId }: { userId: string }) => {
       const userData: UserData = await response.json();
       setUser(userData);
 
-      // const statsResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/${userId}/stats`);
-      // if (!statsResponse.ok) {
-      //   throw new Error('Failed to fetch user stats');
-      // }
-      // const stats = await statsResponse.json();
+      const statsResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/get-user-stats/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (!statsResponse.ok) {
+        throw new Error('Failed to fetch user stats');
+      }
+      const stats = await statsResponse.json();
 
-      // setStats(stats)
+      setStats(stats)
 
     } catch (error) {
       setError(error.message || 'Failed to fetch user data');
