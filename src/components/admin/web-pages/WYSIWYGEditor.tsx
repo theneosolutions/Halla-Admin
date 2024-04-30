@@ -69,12 +69,13 @@ const PageEditor = ({ content, setContent }) => {
       <button onClick={handleSave}>Save</button> */}
 
 
-      <SunEditor
-        setOptions={suneditorOptions}
-        onChange={setContent}
-        setContents={content}
-        placeholder="Start designing your page"
-      />
+      { // @ts-ignore
+        <SunEditor
+          setOptions={suneditorOptions}
+          onChange={setContent}
+          setContents={content}
+          placeholder="Start designing your page"
+        />}
     </div>
   );
 };
