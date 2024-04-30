@@ -14,7 +14,7 @@ interface EventData {
 
 const columnHelper = createColumnHelper<EventData>();
 
-const UserEventsList = ({ userId, ...props }: { userId: string, isHomePage: boolean }) => {
+const UserEventsList = ({ userId }: { userId: string }) => {
     const [events, setEvents] = useState<EventData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -122,7 +122,7 @@ const UserEventsList = ({ userId, ...props }: { userId: string, isHomePage: bool
             ),
         },
 
-        ...(!props?.isHomePage ? [{
+        {
             id: 'actions',
             header: () => (
                 <p className="text-sm font-bold text-gray-600 dark:text-white">Actions</p>
@@ -134,7 +134,7 @@ const UserEventsList = ({ userId, ...props }: { userId: string, isHomePage: bool
                     {/* <MdDelete className="cursor-pointer text-red-500 dark:text-red-300 ml-1" onClick={() => handleDelete(info?.row?.original?.id)} /> */}
                 </div>
             ),
-        }] : [])
+        }
     ];
 
 
