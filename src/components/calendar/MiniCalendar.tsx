@@ -4,9 +4,10 @@ import Card from 'components/card';
 import 'react-calendar/dist/Calendar.css';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import 'styles/MiniCalendar.css';
+import { Value } from 'react-calendar/dist/cjs/shared/types';
 
 const MiniCalendar = () => {
-  const [value, onChange] = useState(new Date());
+  const [value, onChange] = useState<Value>(new Date());
 
   return (
     <div>

@@ -10,7 +10,7 @@
 const nextConfig = {
   swcMinify: true,
   // basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-  NEXT_PUBLIC_SERVER: process.env.NEXT_PUBLIC_SERVER,
+  // NEXT_PUBLIC_SERVER: process.env.NEXT_PUBLIC_SERVER,
   // assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
   images: {
     domains: [
@@ -21,9 +21,8 @@ const nextConfig = {
     // Make ENV
     unoptimized: true,
   },
-  experimental: {
-    appDir: true,
-  },
+  // Can't upgrade eslint library version because of issue with nextjs
+  // https://github.com/vercel/next.js/issues/64409
 };
 
 module.exports = nextConfig;
