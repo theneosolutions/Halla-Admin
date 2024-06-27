@@ -29,13 +29,14 @@ function SignInDefault() {
     const url = `${process.env.NEXT_PUBLIC_SERVER}/auth/sign-in`;
 
     try {
+      const role = 'admin';
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'accept': 'application/json'
         },
-        body: JSON.stringify({ emailOrUsername, password })
+        body: JSON.stringify({ emailOrUsername, password, role })
       });
 
       if (!response.ok) {
