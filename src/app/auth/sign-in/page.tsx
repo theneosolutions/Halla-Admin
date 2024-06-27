@@ -29,13 +29,14 @@ function SignInDefault() {
     const url = `${process.env.NEXT_PUBLIC_SERVER}/auth/sign-in`;
 
     try {
+      const role = 'admin';
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'accept': 'application/json'
         },
-        body: JSON.stringify({ emailOrUsername, password })
+        body: JSON.stringify({ emailOrUsername, password, role })
       });
 
       if (!response.ok) {
@@ -70,7 +71,7 @@ function SignInDefault() {
             <p className="mb-9 ml-1 text-base text-gray-600">
               Enter your email and password to sign in!
             </p>
-            <div className="mb-6 flex h-[50px] w-full items-center justify-center gap-2 rounded-xl bg-lightPrimary hover:cursor-pointer dark:bg-navy-800 dark:text-white">
+            {/* <div className="mb-6 flex h-[50px] w-full items-center justify-center gap-2 rounded-xl bg-lightPrimary hover:cursor-pointer dark:bg-navy-800 dark:text-white">
               <div className="rounded-full text-xl">
                 <FcGoogle />
               </div>
@@ -82,7 +83,7 @@ function SignInDefault() {
               <div className="h-px w-full bg-gray-200 dark:!bg-navy-700" />
               <p className="text-base text-gray-600"> or </p>
               <div className="h-px w-full bg-gray-200 dark:!bg-navy-700" />
-            </div>
+            </div> */}
             {/* Email */}
             <form onSubmit={handleSubmit}>
               <InputField
@@ -132,7 +133,7 @@ function SignInDefault() {
               </button>
               {error && <p className="text-red-500">{error}</p>}
             </form>
-            <div className="mt-4">
+            {/* <div className="mt-4">
               <span className="text-sm font-medium text-navy-700 dark:text-gray-500">
                 Not registered yet?
               </span>
@@ -142,7 +143,7 @@ function SignInDefault() {
               >
                 Create an account
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       }
